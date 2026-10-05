@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f4f6f9;
+        color: #1f2937;
+    }
+
+    .header {
+        background: #111827;
+        color: white;
+        padding: 20px 30px;
+    }
+
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .header p {
+        margin-top: 5px;
+        color: #9ca3af;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+        margin-bottom: 20px;
+        color: #111827;
+    }
+
+    button {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #1d4ed8;
+    }
+
+    input, select {
+        padding: 9px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+    }
+    /* ===== PROFESSIONAL DASHBOARD ===== */
+
+.dashboard-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    border-left: 5px solid #2563eb;
+}
+
+.dashboard-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #4b5563;
+}
+
+.dashboard-card p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #111827;
+}
+
+.dashboard-card.high {
+    border-left-color: #ef4444;
+}
+
+.dashboard-card.medium {
+    border-left-color: #f59e0b;
+}
+
+.dashboard-card.low {
+    border-left-color: #22c55e;
+}
+
+.dashboard-card.total {
+    border-left-color: #2563eb;
+}
+
+/* Dashboard table */
+
+#dashboardTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+#dashboardTable th {
+    background: #111827;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+#dashboardTable td {
+    padding: 10px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#dashboardTable tr:hover {
+    background: #f9fafb;
+}
+
+/* Risk badges */
+
+.risk-high {
+    color: #b91c1c;
+    font-weight: bold;
+}
+
+.risk-medium {
+    color: #b45309;
+    font-weight: bold;
+}
+
+.risk-low {
+    color: #15803d;
+    font-weight: bold;
+}
+
+/* Mobile */
+
+@media (max-width: 800px) {
+    .dashboard-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .dashboard-summary {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+    <title>Machine Risk Prediction</title>
+</head>
+
+<body>
+    <div class="header">
+    <h1>⚙️ Machine Risk Management</h1>
+    <p>Dynamic Machine Data & Local Risk Prediction</p>
+</div>
+
+<div class="container">
+
+    <h1>🏭 Dynamic Machine Risk Prediction</h1>
+
+    <p>Welcome to the Machine Risk Management System.</p>
+
+    <!-- Field Configuration -->
+<div class="card">
+    <h2>Field Configuration</h2>
+
+    <table id ="fieldTable" border="1">
+        <tr>
+            <th>Field Name</th>
+            <th>Type</th>
+            <th>Required</th>
+        </tr>
+
+        <tr>
+    <td><input type="text" value="Machine Name"></td>
+    <td>
+
+        <select>
+            <option>Text</option>
+            <option>Number</option>
+        </select>
+      
+    </td>
+    <td>
+        <select>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td><input type="text" value="Temperature"></td>
+    <td>
+        <select>
+            <option>Number</option>
+            <option>Text</option>
+            <option>Dropdown</option>
+        </select>
+    </td>
+    
+    <td>
+        <select>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td><input type="text" value="Pressure"></td>
+    <td>
+        <select>
+            <option>Number</option>
+            <option>Text</option>
+            <option>Dropdown</option>
+        </select>
+    </td>
+   
+    <td>
+        <select>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td><input type="text" value="Vibration"></td>
+    <td>
+        <select>
+            <option>Dropdown</option>
+            <option>Number</option>
+            <option>Text</option>
+        </select>
+    </td>
+    
+    <td>
+        <select>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+    </td>
+</tr>
+
+
+<tr>
+    <td><input type="text" value="Humidity"></td>
+    <td>
+        <select>
+            <option>Number</option>
+            <option>Text</option>
+            <option>Dropdown</option>
+        </select>
+    </td>
+    <td>
+        <select>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+    </td>
+</tr>
+    </table>
+
+    <br>
+
+    <button onclick="addField()">Add New Field </button>
+</div>
+
+    <!-- Machine Management -->
+<div class="card">
+    <h2>Machine Management</h2>
+
+    <button onclick="addMachine()">Add Machine</button>
+        <div id="machineForm" style="display:none;"> 
+        </div>
+    
+    <!-- Machine Dashboard -->
+<div class="card">
+    <h2>📊 Machine Dashboard</h2>
+
+    <div class="dashboard-summary">
+
+    <div class="dashboard-card total">
+        <h3>🏭 Total Machines</h3>
+        <p id="totalMachines">0</p>
+    </div>
+
+    <div class="dashboard-card high">
+        <h3>🔴 High Risk</h3>
+        <p id="highRiskCount">0</p>
+    </div>
+
+    <div class="dashboard-card medium">
+        <h3>🟡 Medium Risk</h3>
+        <p id="mediumRiskCount">0</p>
+    </div>
+
+    <div class="dashboard-card low">
+        <h3>🟢 Low Risk</h3>
+        <p id="lowRiskCount">0</p>
+    </div>
+
+</div>
+    <br>
+
+    <h3>Machine List</h3>
+
+    <table border="1" id="dashboardTable">
+        <thead>
+            <tr>
+                <th>Machine Name</th>
+                <th>Temperature</th>
+                <th>Pressure</th>
+                <th>Vibration</th>
+                <th>Humidity</th>
+                <th>Risk</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="dashboardTableBody">
+        </tbody>
+    </table>
+    <br>
+
+
+ <div style="width: 400px; margin-top: 20px;">
+    <canvas id="riskChart"></canvas>
+ </div>
+</div>
+
+    <!-- Risk Prediction -->
+<div class="card">
+    <h2>Risk Prediction</h2>
+
+    <label for="machineSelect">Select Machine:</label>
+
+<select id="machineSelect">
+    <option value="">-- Select Machine --</option>
+</select>
+
+<button type="button" onclick="predictSelectedMachine()">
+    Predict Risk
+</button>
+
+<p id="predictionResult"></p>
+</div>
+     <script>
+
+let savedMachines = [];
+
+
+// ===============================
+// ADD NEW FIELD
+// ===============================
+function addField() {
+
+    const table = document.getElementById("fieldTable");
+
+    const row = table.insertRow();
+
+    row.innerHTML = `
+        <td>
+            <input type="text" placeholder="Field Name">
+        </td>
+
+        <td>
+            <select>
+                <option>Text</option>
+                <option>Number</option>
+                <option>Dropdown</option>
+            </select>
+        </td>
+
+        <td>
+            <select>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </td>
+    `;
+}
+
+
+// ===============================
+// ADD MACHINE
+// ===============================
+
+function addMachine() {
+
+    const table = document.getElementById("fieldTable");
+    const form = document.getElementById("machineForm");
+
+    if (!table || !form) {
+
+        alert("Machine form not found!");
+
+        return;
+    }
+
+    form.style.display = "block";
+
+    let html = ``;
+
+    const rows = table.querySelectorAll("tr");
+
+    rows.forEach((row, index) => {
+
+        // Skip table header
+        if (index === 0) return;
+
+        const cells = row.querySelectorAll("td");
+
+        if (cells.length < 3) return;
+
+
+        // FIELD NAME
+
+        const nameInput =
+            cells[0].querySelector("input");
+
+        if (!nameInput) return;
+
+        const fieldName =
+            nameInput.value.trim();
+
+        if (!fieldName) return;
+
+
+        // FIELD TYPE
+
+        const typeSelect =
+            cells[1].querySelector("select");
+
+        if (!typeSelect) return;
+
+        const fieldType =
+            typeSelect.value;
+
+
+        // REQUIRED
+
+        const requiredSelect =
+            cells[2].querySelector("select");
+
+        const required =
+            requiredSelect
+                ? requiredSelect.value
+                : "No";
+
+
+        html += `
+            <div style="margin-bottom:15px;">
+
+                <label>
+                    <strong>${fieldName}</strong>
+                    ${required === "Yes" ? "*" : ""}
+                </label>
+
+                <br>
+        `;
+
+
+        // TEXT FIELD
+
+        if (fieldType === "Text") {
+
+            html += `
+                <input
+                    type="text"
+                    id="machine_${fieldName}"
+                    placeholder="Enter ${fieldName}"
+                >
+            `;
+        }
+
+
+        // NUMBER FIELD
+
+        else if (fieldType === "Number") {
+
+            html += `
+                <input
+                    type="number"
+                    id="machine_${fieldName}"
+                    placeholder="Enter ${fieldName}"
+                >
+            `;
+        }
+
+
+        // DROPDOWN FIELD
+
+        else if (fieldType === "Dropdown") {
+
+            html += `
+                <select id="machine_${fieldName}">
+
+                    <option value="">
+                        Select ${fieldName}
+                    </option>
+
+                    <option value="Low">
+                        Low
+                    </option>
+
+                    <option value="Medium">
+                        Medium
+                    </option>
+
+                    <option value="High">
+                        High
+                    </option>
+
+                </select>
+            `;
+        }
+
+
+        html += `
+            </div>
+        `;
+    });
+
+
+    html += `
+        <button
+            type="button"
+            onclick="saveMachine()">
+            Save Machine
+        </button>
+
+        <button
+            type="button"
+            onclick="predictRisk()">
+            Predict Risk
+        </button>
+    `;
+
+
+    form.innerHTML = html;
+}
+
+
+// ===============================
+// SAVE MACHINE
+// ===============================
+
+
+
+async function saveMachine() {
+
+    const table = document.getElementById("fieldTable");
+
+    if (!table) {
+        alert("Field configuration table not found.");
+        return;
+    }
+
+    const rows = table.querySelectorAll("tr");
+
+    let machineData = {};
+
+    // =====================================
+    // 1. READ ALL MACHINE FIELDS
+    // =====================================
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const cells = rows[i].querySelectorAll("td");
+
+        if (cells.length < 3) {
+            continue;
+        }
+
+        const nameInput = cells[0].querySelector("input");
+
+        if (!nameInput) {
+            continue;
+        }
+
+        const fieldName = nameInput.value.trim();
+
+        if (!fieldName) {
+            continue;
+        }
+
+        const element = document.getElementById(
+            "machine_" + fieldName
+        );
+
+        if (element) {
+            machineData[fieldName] = element.value;
+        }
+    }
+
+
+    // =====================================
+    // 2. CHECK REQUIRED FIELDS
+    // =====================================
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const cells = rows[i].querySelectorAll("td");
+
+        if (cells.length < 3) {
+            continue;
+        }
+
+        const nameInput = cells[0].querySelector("input");
+        const requiredSelect = cells[2].querySelector("select");
+
+        if (!nameInput || !requiredSelect) {
+            continue;
+        }
+
+        const fieldName = nameInput.value.trim();
+        const required = requiredSelect.value;
+
+        if (
+            required === "Yes" &&
+            (!machineData[fieldName] ||
+             machineData[fieldName].trim() === "")
+        ) {
+
+            alert("Please enter " + fieldName);
+            return;
+        }
+    }
+
+    // =====================================
+// 3. SEND MACHINE DATA TO PYTHON ML
+// =====================================
+
+const temperature =
+    parseFloat(machineData["Temperature"]);
+
+const pressure =
+    parseFloat(machineData["Pressure"]);
+
+const vibration =
+    machineData["Vibration"];
+
+const humidity =
+    parseFloat(machineData["Humidity"]);
+
+
+// Check ML input values
+if (
+    isNaN(temperature) ||
+    isNaN(pressure) ||
+    !vibration ||
+    isNaN(humidity)
+) {
+    alert("Please enter valid machine values.");
+    return;
+}
+
+
+// =====================================
+// 4. ASK PYTHON ML MODEL FOR RISK
+// =====================================
+
+let risk;
+
+try {
+
+    const response = await fetch("/predict", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+            Temperature: temperature,
+            Pressure: pressure,
+            Vibration: vibration,
+            Humidity: humidity
+
+        })
+
+    });
+
+
+    const result = await response.json();
+
+
+    if (!response.ok || !result.success) {
+
+        alert(
+            "ML prediction failed:\n" +
+            (result.error || "Unknown error")
+        );
+
+        return;
+    }
+
+
+    // Risk returned by Python Random Forest
+    risk = result.risk;
+
+    console.log("Python ML Prediction:", result);
+
+}
+catch (error) {
+
+    console.error("ML prediction error:", error);
+
+    alert(
+        "Could not connect to the Python ML server."
+    );
+
+    return;
+}
+
+
+// =====================================
+// 5. SAVE ML RISK
+// =====================================
+
+machineData.risk = risk;
+
+// Save machine to SQLite database
+try {
+    const dbResponse = await fetch("/machines", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(machineData)
+    });
+
+    const dbResult = await dbResponse.json();
+
+    if (!dbResponse.ok || !dbResult.success) {
+        alert(
+            "Database save failed:\n" +
+            (dbResult.error || "Unknown error")
+        );
+        return;
+    }
+
+    machineData.id = dbResult.id;
+
+    console.log("Machine saved to database:", dbResult);
+
+} catch (error) {
+    console.error("Database error:", error);
+    alert("Could not save machine to database.");
+    return;
+}
+
+
+// =====================================
+// 6. SAVE MACHINE
+// =====================================
+
+if (typeof savedMachines === "undefined") {
+
+    alert("savedMachines array is missing.");
+    return;
+
+}
+
+
+if (window.editingMachineIndex !== undefined) {
+
+    savedMachines[window.editingMachineIndex] =
+        machineData;
+
+    window.editingMachineIndex = undefined;
+
+}
+else {
+
+    savedMachines.push(machineData);
+
+}
+
+
+    // =====================================
+    // 6. ADD MACHINE TO SELECT DROPDOWN
+    // =====================================
+
+    const machineSelect =
+        document.getElementById("machineSelect");
+
+    if (machineSelect) {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            savedMachines.length - 1;
+
+        option.textContent =
+            machineData["Machine Name"] ||
+            "Unnamed Machine";
+
+        option.dataset.temperature =
+            machineData["Temperature"] || "";
+
+        option.dataset.pressure =
+            machineData["Pressure"] || "";
+
+        option.dataset.vibration =
+            machineData["Vibration"] || "";
+
+        option.dataset.humidity =
+            machineData["Humidity"] || "";
+
+        option.dataset.risk =
+            risk;
+
+        machineSelect.appendChild(option);
+    }
+
+
+    // =====================================
+    // 7. SHOW SUCCESS MESSAGE
+    // =====================================
+
+    alert(
+        "Machine saved successfully!\n\n" +
+        "Machine: " +
+        (machineData["Machine Name"] || "Unnamed") +
+        "\nRisk: " +
+        risk
+    );
+
+
+    // =====================================
+    // 8. UPDATE DASHBOARD
+    // =====================================
+
+    if (typeof updateDashboard === "function") {
+
+        try {
+
+            updateDashboard();
+
+        } catch (error) {
+
+            console.error(
+                "Dashboard error:",
+                error
+            );
+
+        }
+    }
+
+}
+// ===============================
+// DASHBOARD
+// ===============================
+function editMachine(index) {
+
+    const machine = savedMachines[index];
+
+    if (!machine) {
+        return;
+    }
+
+    document.getElementById("machineForm").style.display = "block";
+
+    let html = `
+        <h3>Edit Machine</h3>
+    `;
+
+    html += `
+        <label>Machine Name *</label><br>
+        <input
+            type="text"
+            id="machine_Machine Name"
+            value="${machine["Machine Name"] || ""}"
+        >
+        <br><br>
+
+        <label>Temperature *</label><br>
+        <input
+            type="number"
+            id="machine_Temperature"
+            value="${machine["Temperature"] || ""}"
+        >
+        <br><br>
+
+        <label>Pressure *</label><br>
+        <input
+            type="number"
+            id="machine_Pressure"
+            value="${machine["Pressure"] || ""}"
+        >
+        <br><br>
+
+        <label>Vibration *</label><br>
+        <select id="machine_Vibration">
+
+            <option value="Low"
+                ${machine["Vibration"] === "Low" ? "selected" : ""}>
+                Low
+            </option>
+
+            <option value="Medium"
+                ${machine["Vibration"] === "Medium" ? "selected" : ""}>
+                Medium
+            </option>
+
+            <option value="High"
+                ${machine["Vibration"] === "High" ? "selected" : ""}>
+                High
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <label>Humidity *</label><br>
+        <input
+            type="number"
+            id="machine_Humidity"
+            value="${machine["Humidity"] || ""}"
+        >
+
+        <br><br>
+
+        <button onclick="updateMachine(${index})">
+            Update Machine
+        </button>
+    `;
+
+    document.getElementById("machineForm").innerHTML = html;
+}
+
+
+function updateDashboard() {
+
+    console.log("Updating dashboard...");
+    console.log("Saved machines:", savedMachines);
+
+    // =========================
+    // 1. COUNT MACHINES
+    // =========================
+
+    let total = savedMachines.length;
+    let high = 0;
+    let medium = 0;
+    let low = 0;
+
+    savedMachines.forEach(machine => {
+
+        if (machine.risk === "High") {
+            high++;
+        }
+        else if (machine.risk === "Medium") {
+            medium++;
+        }
+        else if (machine.risk === "Low") {
+            low++;
+        }
+
+    });
+
+
+    // =========================
+    // 2. UPDATE DASHBOARD CARDS
+    // =========================
+
+    const totalElement =
+        document.getElementById("totalMachines");
+
+    const highElement =
+        document.getElementById("highRiskCount");
+
+    const mediumElement =
+        document.getElementById("mediumRiskCount");
+
+    const lowElement =
+        document.getElementById("lowRiskCount");
+
+
+    if (totalElement) {
+        totalElement.innerText = total;
+    }
+
+    if (highElement) {
+        highElement.innerText = high;
+    }
+
+    if (mediumElement) {
+        mediumElement.innerText = medium;
+    }
+
+    if (lowElement) {
+        lowElement.innerText = low;
+    }
+
+
+    // =========================
+    // 3. FIND DASHBOARD TABLE
+    // =========================
+
+    const table =
+        document.getElementById("dashboardTable");
+
+    if (!table) {
+
+        console.error(
+            "dashboardTable not found"
+        );
+
+        return;
+    }
+
+
+    // =========================
+    // 4. FIND / CREATE TBODY
+    // =========================
+
+    let tbody =
+        table.querySelector("tbody");
+
+    if (!tbody) {
+
+        tbody =
+            document.createElement("tbody");
+
+        table.appendChild(tbody);
+    }
+
+
+    // Clear old rows
+
+    tbody.innerHTML = "";
+
+
+    // =========================
+    // 5. ADD MACHINE ROWS
+    // =========================
+
+    savedMachines.forEach((machine, index) => {
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td>
+                ${machine["Machine Name"] || ""}
+            </td>
+
+            <td>
+                ${machine["Temperature"] || ""}
+            </td>
+
+            <td>
+                ${machine["Pressure"] || ""}
+            </td>
+
+            <td>
+                ${machine["Vibration"] || ""}
+            </td>
+
+            <td>
+                ${machine["Humidity"] || ""}
+            </td>
+
+            <td>
+                ${machine.risk || "Low"}
+            </td>
+
+            <td>
+
+                <button
+                    type="button"
+                    onclick="updateMachine(${index})">
+                    ✏️ Edit
+                </button>
+
+                <button
+                    type="button"
+                    onclick="deleteMachine(${index})">
+                    🗑️ Delete
+                </button>
+
+            </td>
+
+        `;
+
+
+        tbody.appendChild(row);
+
+    });
+
+
+    console.log(
+        "Dashboard updated successfully."
+    );
+}
+    
+function updateMachine(index) {
+
+    const machine = savedMachines[index];
+
+    if (!machine) {
+        alert("Machine not found.");
+        return;
+    }
+
+    // Remember which machine we are editing
+    window.editingMachineIndex = index;
+
+    // Create the machine form first
+    addMachine();
+
+    // Now find the generated fields
+    const machineName =
+        document.getElementById("machine_Machine Name");
+
+    const temperature =
+        document.getElementById("machine_Temperature");
+
+    const pressure =
+        document.getElementById("machine_Pressure");
+
+    const vibration =
+        document.getElementById("machine_Vibration");
+
+    const humidity =
+        document.getElementById("machine_Humidity");
+
+
+    // Check that fields exist
+    if (
+        !machineName ||
+        !temperature ||
+        !pressure ||
+        !vibration ||
+        !humidity
+    ) {
+
+        console.error("Machine form fields not found:", {
+            machineName,
+            temperature,
+            pressure,
+            vibration,
+            humidity
+        });
+
+        alert("Machine form fields could not be created.");
+        return;
+    }
+
+
+    // Put existing machine data into the form
+    machineName.value =
+        machine["Machine Name"] || "";
+
+    temperature.value =
+        machine["Temperature"] || "";
+
+    pressure.value =
+        machine["Pressure"] || "";
+
+    vibration.value =
+        machine["Vibration"] || "";
+
+    humidity.value =
+        machine["Humidity"] || "";
+
+
+    // Scroll to form
+    document.getElementById("machineForm").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+
+
+    function deleteMachine(index) {
+
+    if (!savedMachines[index]) {
+        return;
+    }
+
+    savedMachines.splice(index, 1);
+
+    updateDashboard();
+
+    alert("Machine deleted successfully!");
+}
+    
+
+    // Total
+
+    totalMachines.innerText =
+        savedMachines.length;
+
+
+    // Risk counters
+
+    let high = 0;
+    let medium = 0;
+    let low = 0;
+
+
+    savedMachines.forEach(machine => {
+
+        if (machine.risk === "High") {
+
+            high++;
+
+        }
+        else if (machine.risk === "Medium") {
+
+            medium++;
+
+        }
+        else {
+
+            low++;
+        }
+
+    });
+
+
+    highRiskCount.innerText = high;
+
+    mediumRiskCount.innerText = medium;
+
+    lowRiskCount.innerText = low;
+
+     const tableBody =
+     document.getElementById("dashboardTableBody");
+    // Clear table
+
+    tableBody.innerHTML = "";
+
+
+    // Add machines to table
+
+    savedMachines.forEach((machine,index) => {
+
+        const row =
+            document.createElement("tr");
+
+         row.innerHTML = `
+
+    <td>${machine["Machine Name"] || "-"}</td>
+
+    <td>${machine["Temperature"] || "-"}</td>
+
+    <td>${machine["Pressure"] || "-"}</td>
+
+    <td>${machine["Vibration"] || "-"}</td>
+
+    <td>${machine["Humidity"] || "-"}</td>
+
+    <td>
+        <strong>${machine.risk || "-"}</strong>
+    </td>
+
+    <td>
+        <button onclick="editMachine(${index})">
+            ✏️ Edit
+        </button>
+
+        <button onclick="deleteMachine(${index})">
+            🗑️ Delete
+        </button>
+    </td>
+
+`;
+
+        tableBody.appendChild(row);
+
+    });
+
+
+
+// ===============================
+// PREDICT CURRENT MACHINE
+// ===============================
+
+async function predictRisk() {
+
+    const temperature = parseFloat(
+        document.getElementById("machine_Temperature")?.value
+    );
+
+    const pressure = parseFloat(
+        document.getElementById("machine_Pressure")?.value
+    );
+
+    const vibration =
+        document.getElementById("machine_Vibration")?.value;
+
+    const humidity = parseFloat(
+        document.getElementById("machine_Humidity")?.value
+    );
+
+
+    // Check input values
+    if (
+        isNaN(temperature) ||
+        isNaN(pressure) ||
+        !vibration ||
+        isNaN(humidity)
+    ) {
+        alert("Please enter all machine values.");
+        return;
+    }
+
+
+    try {
+
+        // Send machine data to Flask
+        const response = await fetch("/predict", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                Temperature: temperature,
+                Pressure: pressure,
+                Vibration: vibration,
+                Humidity: humidity
+
+            })
+
+        });
+
+
+        const result = await response.json();
+
+
+        // Check Flask response
+        if (result.success) {
+
+            alert(
+                "Machine Risk Level: " +
+                result.risk
+            );
+
+        } else {
+
+            alert(
+                "Prediction failed: " +
+                result.error
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Prediction error:",
+            error
+        );
+
+        alert(
+            "Could not connect to the Flask server."
+        );
+    }
+}
+
+
+// ===============================
+// PREDICT SELECTED MACHINE
+// ===============================
+
+async function predictSelectedMachine() {
+
+    const machineSelect =
+        document.getElementById("machineSelect");
+
+    if (
+        !machineSelect ||
+        machineSelect.selectedIndex <= 0
+    ) {
+        alert("Please select a machine");
+        return;
+    }
+
+    const selectedOption =
+        machineSelect.options[
+            machineSelect.selectedIndex
+        ];
+
+    const temperature =
+        parseFloat(
+            selectedOption.dataset.temperature
+        ) || 0;
+
+    const pressure =
+        parseFloat(
+            selectedOption.dataset.pressure
+        ) || 0;
+
+    const vibration =
+        selectedOption.dataset.vibration || "";
+
+    const humidity =
+        parseFloat(
+            selectedOption.dataset.humidity
+        ) || 0;
+
+    try {
+
+        const response = await fetch("/predict", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                Temperature: temperature,
+                Pressure: pressure,
+                Vibration: vibration,
+                Humidity: humidity
+
+            })
+
+        });
+
+        const result = await response.json();
+
+        console.log("ML prediction:", result);
+
+        if (result.success) {
+
+            const predictionResult =
+                document.getElementById(
+                    "predictionResult"
+                );
+
+            if (predictionResult) {
+
+                predictionResult.innerText =
+                    "Machine Risk Level: " +
+                    result.risk;
+
+            }
+
+            alert(
+                "ML Prediction Result:\n\n" +
+                "Machine Risk Level: " +
+                result.risk
+            );
+
+        } else {
+
+            alert(
+                "Prediction failed:\n\n" +
+                result.error
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Prediction error:",
+            error
+        );
+
+        alert(
+            "Could not connect to the Flask server."
+        );
+    }
+}
+window.addEventListener("DOMContentLoaded", function () {
+    loadMachinesFromDatabase();
+});
+async function loadMachinesFromDatabase() {
+
+    try {
+
+        const response = await fetch("/machines");
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            console.error("Failed to load machines:", result.error);
+            return;
+        }
+
+        savedMachines = result.machines.map(machine => ({
+            id: machine.id,
+
+            "Machine Name": machine.machine_name,
+            "Temperature": machine.temperature,
+            "Pressure": machine.pressure,
+            "Vibration": machine.vibration,
+            "Humidity": machine.humidity,
+
+            risk: machine.risk
+        }));
+
+        console.log("Machines loaded from database:", savedMachines);
+
+        updateDashboard();
+
+    } catch (error) {
+
+        console.error("Database loading error:", error);
+
+    }
+}
+document.addEventListener("DOMContentLoaded", function () {
+    loadMachinesFromDatabase();
+});
+
+</script>
+
+</div>
+</body>
+
+</html>
